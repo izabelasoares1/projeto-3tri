@@ -8884,7 +8884,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 434094974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.815, y: -6.457, z: 0}
+  m_LocalPosition: {x: 2.815, y: -6.451, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1900010106}
@@ -8904,6 +8904,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalSpeed: 4
   jumpSpeed: 600
+  feet: {fileID: 1900010106}
+  feetWidht: 0.5
+  feetHeight: 0.1
+  isGrounded: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 512
+  delayforDoubleJump: 0.2
 --- !u!50 &434094979
 Rigidbody2D:
   serializedVersion: 4
