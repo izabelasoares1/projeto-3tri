@@ -10,6 +10,7 @@ namespace UnityStandardAssets._2D
         public float lookAheadFactor = 3;
         public float lookAheadReturnSpeed = 0.5f;
         public float lookAheadMoveThreshold = 0.1f;
+        public float yMin = -7f;
 
         private float m_OffsetZ;
         private Vector3 m_LastTargetPosition;
@@ -19,15 +20,21 @@ namespace UnityStandardAssets._2D
         // Use this for initialization
         private void Start()
         {
-            m_LastTargetPosition = target.position;
-            m_OffsetZ = (transform.position - target.position).z;
+            if (target != null){
+                updateVariables();
+            }
             transform.parent = null;
         }
 
+        void updateVariables() {
+            m_LastTargetPosition = target.position;
+            m_OffsetZ = (transform.position - target.position).z;
+        }
 
         // Update is called once per frame
         private void Update()
         {
+            if (target != null) {
             // only update lookahead pos if accelerating or changed direction
             float xMoveDelta = (target.position - m_LastTargetPosition).x;
 
@@ -45,9 +52,22 @@ namespace UnityStandardAssets._2D
             Vector3 aheadTargetPos = target.position + m_LookAheadPos + Vector3.forward*m_OffsetZ;
             Vector3 newPos = Vector3.SmoothDamp(transform.position, aheadTargetPos, ref m_CurrentVelocity, damping);
 
+            if (newPos.y < yMin) {
+                newPos = new Vector3(newPos.x, yMin, newPos.z);
+
+            }
+
             transform.position = newPos;
 
             m_LastTargetPosition = target.position;
+            }
+            else {
+                GameObject obj = GameObject.FindGameObjectWithTag("Player");
+                if (obj != null){
+                    target = obj.transform;
+                    updateVariables();
+                }
+            }
         }
     }
 }
