@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GM : MonoBehaviour {
 
@@ -48,6 +49,22 @@ public class GM : MonoBehaviour {
 		}
 		UpdateTimer();
 		DisplayHudData();
+	}
+
+	public void RestartLevel() {
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
+	public void ExitToMainMenu() {
+		LoadScene("MainMenu");
+	}
+
+	public void CloseApp() {
+		Application.Quit();
+	}
+
+	public void LoadScene(string sceneName) {
+		SceneManager.LoadScene(sceneName);
 	}
 
 	void UpdateTimer() {
