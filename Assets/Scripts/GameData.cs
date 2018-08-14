@@ -7,4 +7,6 @@ using System;
 public class GameData {
 
 	public int coinCount = 0;
+
+	public int lifeCount = 3;
 }
