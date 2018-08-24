@@ -15,6 +15,8 @@ public class GM : MonoBehaviour {
 
 	public float timeToRespawn = 2f;
 
+	public float timeToKill = 1.5f;
+
 	public float maxTime = 120f;
 	bool timerOn = true;
 	float timeLeft;
@@ -131,4 +133,30 @@ public void LevelComplete() {
 	ui.levelComplete.levelCompletePanel.SetActive(true);
 }
 
+public void HurtPlayer() {
+	if (player != null){
+		DisableAndPushPlayer();
+		Destroy(player.gameObject, timeToKill);
+		DecrementLives();
+		if (data.lifeCount > 0) {
+		Invoke("RespawnPlayer", timeToKill + timeToRespawn);
+	}
+	else {
+		GameOver();
+		}
+	}
+}
+
+	void DisableAndPushPlayer() {
+		player.transform.GetComponent<PlayerCtrl>().enabled = false;
+		foreach (Collider2D c2d in player.transform.GetComponents<Collider2D>()) {
+			c2d.enabled = false;
+	}
+		foreach (Transform child in player.transform) {
+			child.gameObject.SetActive(false);
+	}
+		Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+		rb.velocity = Vector2.zero;
+		rb.AddForce(new Vector2(-150.0f, 400f));
+	}
 }
