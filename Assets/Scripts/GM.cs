@@ -135,6 +135,7 @@ public void LevelComplete() {
 
 public void HurtPlayer() {
 	if (player != null){
+		AudioManager.instance.PlayFailSound(player.gameObject);
 		DisableAndPushPlayer();
 		Destroy(player.gameObject, timeToKill);
 		DecrementLives();

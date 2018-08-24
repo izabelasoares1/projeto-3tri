@@ -8827,6 +8827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSFX:
     coinPickup: {fileID: 8300000, guid: 76f9e42aeae304c47b23554b92e1d49d, type: 3}
+    fail: {fileID: 8300000, guid: f8023feec0709a1489390c69bf73d39e, type: 3}
   audioPlayer:
     jump: {fileID: 8300000, guid: 86511dc94590493498698a89bbd9bdac, type: 3}
 --- !u!1 &203381483
@@ -11130,6 +11131,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 1596682500935804, guid: 47f15c0c8a1c70e4f95f72995caeeb46,
     type: 2}
   timeToRespawn: 2
+  timeToKill: 1.5
   maxTime: 120
   ui:
     hud:
