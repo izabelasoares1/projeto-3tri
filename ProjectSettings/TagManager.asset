@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Coin
   - MovingPlatform
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
