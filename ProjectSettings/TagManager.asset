@@ -9,6 +9,8 @@ TagManager:
   - Coin
   - MovingPlatform
   - CheckPoint
+  - Enemy
+  - Obstaculo
   layers:
   - Default
   - TransparentFX

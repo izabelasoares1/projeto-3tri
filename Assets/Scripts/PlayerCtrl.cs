@@ -145,6 +145,11 @@ Hurt - 5
 			Destroy(other.gameObject);
 			break;
 
+		case "Enemy":
+			anim.SetInteger("State", 5);
+			GM.instance.HurtPlayer();
+			break;
+
 		case "CheckPoint":
 			GameObject obj = GameObject.Find ("SpawnPoint");
 			obj.transform.position = other.transform.position;
