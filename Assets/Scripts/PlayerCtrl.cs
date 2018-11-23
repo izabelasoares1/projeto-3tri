@@ -41,6 +41,10 @@ Hurt - 5
 	bool canDoubleJump = false;
 	public float delayforDoubleJump = 0.2f;
 
+	public float delayforShoot = 0f;
+
+	float shootTime = 0f;
+
 	public GameObject rightShootPrefab;
 
 	public GameObject leftShootPrefab;
@@ -58,6 +62,10 @@ Hurt - 5
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (shootTime <delayforShoot) {
+			shootTime += Time.deltaTime;
+		}
 
 		if (transform.position.y < GM.instance.yMinLive) {
 			GM.instance.KillPlayer();
@@ -86,6 +94,11 @@ Hurt - 5
 	}
 
 	void Shoot() {
+		if(delayforShoot > shootTime) {
+			return;
+		}
+
+		shootTime = 0f;
 
 		if (sr.flipX){
 			AudioManager.instance.PlayLaserSound(leftShoot.gameObject);
