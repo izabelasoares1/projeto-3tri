@@ -86,7 +86,15 @@ Hurt - 5
 	}
 
 	void Shoot() {
+
+		if (sr.flipX){
+			AudioManager.instance.PlayLaserSound(leftShoot.gameObject);
+			Instantiate(leftShootPrefab, leftShoot.position, Quaternion.identity);
+		}
+		else{
+		AudioManager.instance.PlayLaserSound(rightShoot.gameObject);
 		Instantiate(rightShootPrefab, rightShoot.position, Quaternion.identity);
+		}
 	}
 
 	void MoveHorizontal(float speed) {
