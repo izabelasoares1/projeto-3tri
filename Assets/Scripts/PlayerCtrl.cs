@@ -25,6 +25,11 @@ Hurt - 5
 	bool isJumping = false;
 
 	public Transform feet;
+
+	public Transform rightShoot;
+
+	public Transform leftShoot;
+
 	public float feetWidht = 0.5f;
 
 	public float feetHeight = 0.1f;
@@ -35,6 +40,10 @@ Hurt - 5
 
 	bool canDoubleJump = false;
 	public float delayforDoubleJump = 0.2f;
+
+	public GameObject rightShootPrefab;
+
+	public GameObject leftShootPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -69,7 +78,15 @@ Hurt - 5
 			Jump();
 		}
 
+		if(Input.GetButtonDown("Fire1")){
+			Shoot();
+		}
+
 		ShowFalling();
+	}
+
+	void Shoot() {
+		Instantiate(rightShootPrefab, rightShoot.position, Quaternion.identity);
 	}
 
 	void MoveHorizontal(float speed) {
